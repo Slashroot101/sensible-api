@@ -1,14 +1,14 @@
 const db = require('../index');
 const {Model, DataTypes} = require('sequelize');
 
-class User extends Model {
+class DiscordUser extends Model {
 	// eslint-disable-next-line no-empty-function
 	static associate() {}
 }
 
-User.init(
+DiscordUser.init(
 	{
-		discordUserId: {
+		discordSnowflake: {
 			type: DataTypes.STRING,
 			unique: true,
 		},
@@ -20,4 +20,4 @@ User.init(
 	},
 );
 
-module.exports = User;
+module.exports = DiscordUser;

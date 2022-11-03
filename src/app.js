@@ -6,7 +6,7 @@ const {forceDbReset} = require('./lib/config');
 
 module.exports = async (fastify, opts) => {
   fastify.register(autoload, {
-    dir: path.join(path.resolve(), 'src', 'routes'),
+    dir: path.join(path.resolve(), 'src', 'lib', 'routes'),
     options: Object.assign({}, opts)
   });
 
