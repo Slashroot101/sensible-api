@@ -42,4 +42,4 @@ module.exports = async function (fastify, opts){
 
         return {discordUsers: discordUsers.map(x => x.get())}
     });
-}
+};
