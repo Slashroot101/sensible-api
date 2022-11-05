@@ -11,7 +11,7 @@ module.exports = async function (fastify, opts){
     return {message: savedMessage.get()};
   });
 
-  fastify.get('/', {}, async (req, reply) => {
+  fastify.get('/', {}, async (req, opts) => {
     logger.info(`Initiating DiscordMessage query with query params: ${JSON.stringify(req.query)}`);
     const {discordUserId, sentiment, messageId} = req.query;
 
