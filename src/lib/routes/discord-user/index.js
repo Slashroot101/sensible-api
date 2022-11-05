@@ -31,7 +31,7 @@ module.exports = async function (fastify, opts){
 
         const updatedUser = await DiscordUser.update(discordUser, {where: {id: req.params.id}, returning: true});
         logger.info(`Succesfully patched user [id=${req.param.id}]`);
-        return {discordUser: updatedUser[1]}
+        return {discordUser: updatedUser[1]};
     });
 
     fastify.get('/', {}, async (req, reply) => {
@@ -40,6 +40,6 @@ module.exports = async function (fastify, opts){
 
         const discordUsers = await DiscordUser.findAll({where: {discordSnowflake}});
 
-        return {discordUsers: discordUsers.map(x => x.get())}
+        return {discordUsers: discordUsers.map(x => x.get())};
     });
 };
