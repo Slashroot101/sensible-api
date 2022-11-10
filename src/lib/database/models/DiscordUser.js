@@ -2,7 +2,6 @@ const db = require('../index');
 const {Model, DataTypes} = require('sequelize');
 
 class DiscordUser extends Model {
-	// eslint-disable-next-line no-empty-function
 	static associate() {}
 }
 
