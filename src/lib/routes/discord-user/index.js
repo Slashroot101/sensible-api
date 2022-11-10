@@ -10,7 +10,7 @@ module.exports = async function (fastify, opts){
 
         if(existingUser){
             logger.info(`Hitting back request for user [snowflake=${discordUser.discordSnowflake}] because the user already exists.`);
-            return reply.code(409).send({msg: 'User already exists, cannot create duplicate'});
+            return reply.code(200).send({discordUser: existingUser.get()});
         }
 
         const user = await new DiscordUser(discordUser).save();

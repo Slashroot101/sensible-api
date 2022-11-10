@@ -3,6 +3,7 @@ const autoload = require('@fastify/autoload');
 const database = require('./lib/database/index');
 const models = require('./lib/database/models');
 const {forceDbReset} = require('./lib/config');
+const seed = require('./lib/database/seed');
 
 module.exports = async (fastify, opts) => {
   fastify.register(autoload, {
@@ -15,4 +16,5 @@ module.exports = async (fastify, opts) => {
 	});
 
   await database.sync({ force: forceDbReset === 'true' });
+  await seed();
 };
