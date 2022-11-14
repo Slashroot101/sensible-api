@@ -8,4 +8,5 @@ module.exports = {
 	dbPassword: process.env.POSTGRES_PASSWORD,
 	dbHost: process.env.DB_HOST,
   forceDbReset: process.env.FORCE_DB_RESET ?? false,
+	natsUrl: process.env.NATS_URL,
 };
