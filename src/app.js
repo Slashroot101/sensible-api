@@ -2,18 +2,13 @@ const path = require('path');
 const autoload = require('@fastify/autoload');
 const database = require('./lib/database/index');
 const models = require('./lib/database/models');
-const {forceDbReset, natsUrl} = require('./lib/config');
+const {forceDbReset} = require('./lib/config');
 const {events} = require('./lib/queue/index');
 const seed = require('./lib/database/seed');
-const { connect } = require('nats');
 const logger = require('./lib/logger');
 
 module.exports = async (fastify, opts) => {
-  logger.info('Connecting to NATS');
-	const nats = await connect({
-		servers: natsUrl,
-	});
-  logger.info('NATS connection complete');
+  const nats = await require('./lib/nats');
 
   logger.info('Beginning NATS subscriptions');
   events.forEach(async e => {

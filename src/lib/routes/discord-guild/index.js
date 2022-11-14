@@ -1,14 +1,15 @@
 const logger = require('../../logger');
-const {DiscordGuild} = require('../../database/models');
+const {DiscordGuild, DiscordGuildRule} = require('../../database/models');
 
 module.exports = async function (fastify, opts){
   fastify.post('/', {}, async (req, reply) => {
     const {discordGuild} = req.body;
     logger.info(`Creating guild [discordSnowflake=${req.body.discordGuild.discordSnowflake}]`);
-    console.log(discordGuild)
+
      let guild = await DiscordGuild.findOne({where: {discordSnowflake: discordGuild.discordSnowflake}});
 
      if(guild){
+
       return reply.code(200).send({discordGuild: guild.get()});
      }
 
