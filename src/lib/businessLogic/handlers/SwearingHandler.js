@@ -1,5 +1,6 @@
 const logger = require('../../logger')
 const filter = require('leo-profanity');
+const {DiscordGuildRuleWarning} = require('../../database/models');
 
 module.exports = class SwearingHandler {
   async process(toggled, user, guild, msg) {

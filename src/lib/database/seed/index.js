@@ -12,7 +12,6 @@ module.exports = async () => {
     await RuleAction.findOrCreate({where: {name: 'timeout'}, create: {id: 1, name: "timeout"}});
     await RuleAction.findOrCreate({where: {name: 'ban'}, create: {id: 2, name: "ban"}});
     await RuleAction.findOrCreate({where: {name: 'kick'}, create: {id: 3, name: "kick"}});
-    await RuleAction.findOrCreate({where: {name: 'log'}, create: {id: 4, name: "log"}});
-    await RuleAction.findOrCreate({where: {name: 'warn'}, create: {id: 5, name: "warn"}});
+    await RuleAction.findOrCreate({where: {name: 'warn'}, create: {id: 4, name: "warn"}});
     logger.info('Completed seeding rule action data');
 }
