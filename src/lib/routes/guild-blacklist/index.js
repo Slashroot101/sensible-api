@@ -18,7 +18,7 @@ module.exports = async (fastify, opts) => {
 
   fastify.put('/discord-guild/:guildId/delete', {}, async (req, reply) => {
     logger.info(`Received delete request for [guildId=${req.params.guildId} and word [word=${req.body.word}]]`);
-    const { word } = req.body;
+    const { word } = req.body.blacklist;
 
     await DiscordGuildBlacklist.destroy({where: {word, discordGuildId: req.params.guildId}});
   });
