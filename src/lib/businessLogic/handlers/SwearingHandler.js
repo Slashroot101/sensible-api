@@ -1,6 +1,5 @@
 const logger = require('../../logger')
 const filter = require('leo-profanity');
-const {DiscordGuildRuleWarning} = require('../../database/models');
 
 module.exports = class SwearingHandler {
   async process(toggled, user, guild, msg) {
@@ -9,9 +8,9 @@ module.exports = class SwearingHandler {
       return false;
     }
 
-    const cleanedMsg = filter.clean(msg);
-
-    if(msg !== cleanedMsg){
+    const cleanedMsg = filter.badWordsUsed(msg);
+    logger.info(`User [userId=${user.id}] used words [${cleanedMsg}] in message`);
+    if(cleanedMsg.length){
       logger.info(`Swearing found in msg for [userId=${user.id}]/[guildId=${guild.id}]`);
 
       return true;

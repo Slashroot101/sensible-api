@@ -6,5 +6,7 @@ const DiscordGuild = require('./DiscordGuild');
 const RuleAction = require('./RuleAction');
 const Rules = require('./Rules');
 const DiscordGuildRuleWarning = require('./DiscordGuildRuleWarning');
+const DiscordGuildBlacklist = require('./DiscordGuildBlacklist');
+const BlacklistMessage = require('./BlacklistMessage');
 
-module.exports = {DiscordUser, Message, MessageToken, DiscordGuildRule, DiscordGuild, RuleAction, Rules, DiscordGuildRuleWarning};
+module.exports = {DiscordUser, BlacklistMessage, DiscordGuildBlacklist, Message, MessageToken, DiscordGuildRule, DiscordGuild, RuleAction, Rules, DiscordGuildRuleWarning};

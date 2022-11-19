@@ -55,6 +55,9 @@ module.exports = async (err, msg) => {
   });
 
   await Promise.all(savedWarnings);
-
-  nats.publish('punish', Buffer.from(JSON.stringify({...parsedMessage, punishments: actions})));
+  console.log(actions);
+  const anyPunishments = actions.filter(x => 'swearing' in x && x['swearing'].contains === true || 'blacklist' in x && x['blacklist'].contains === true || 'sentiment' in x && x['sentiment'].contains === true )
+  if(anyPunishments.length){
+      nats.publish('punish', Buffer.from(JSON.stringify({...parsedMessage, punishments: actions})));
+  }
 };

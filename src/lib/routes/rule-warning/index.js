@@ -1,5 +1,5 @@
 const logger = require('../../logger');
-const {DiscordGuildRuleWarning} = require('../../database/models');
+const {DiscordGuildRuleWarning, Rules, DiscordGuildRule, RuleAction} = require('../../database/models');
 
 module.exports = async (fastify, opts) => {
     fastify.post('/discord-guild-rule/:ruleId', {}, async (req, reply) => {
@@ -25,8 +25,8 @@ module.exports = async (fastify, opts) => {
         logger.info('Received query request for rule warnings');
         const {discordUserId} = req.query;
 
-        const warnings = await DiscordGuildRuleWarning.findAll({where: {discordUserId}});
+        const warnings = await DiscordGuildRuleWarning.findAll({include: [{model: DiscordGuildRule, include: [ {model: Rules}, {model: RuleAction}]},], where: {discordUserId}});
 
-        return {warnings: warnings.map(x => x.get())};
+        return {warnings: warnings.map(x => x.get({plain: true}))};
     });
 }
