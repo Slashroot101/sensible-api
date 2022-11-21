@@ -3,8 +3,8 @@ const {Model, DataTypes} = require('sequelize');
 
 class DiscordGuildActionTier extends Model {
   static associate(models) {
-    models.DiscordGuildActionTier.belongsTo(models.DiscordGuildRule, {foreignKey: {name: 'discordGuildRuleId'}});
-    models.DiscordGuildActionTier.belongsTo(models.RuleAction, {foreignKey: {name: 'ruleActionId'}});
+    models.DiscordRuleActionTier.belongsTo(models.DiscordGuildRule, {foreignKey: {name: 'discordGuildRuleId'}});
+    models.DiscordRuleActionTier.belongsTo(models.RuleAction, {foreignKey: {name: 'ruleActionId'}});
   }
 }
 
